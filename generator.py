@@ -19,9 +19,10 @@ for x in range(0, len(pairList), int(n/3)):
     pairGrid.append(pairList[x:x+int(n/3)])
 
 def offsetList(list, steps):
+    newList = [x for x in list]
     for x in range(steps):
-        list.insert(0, list.pop())
-    return list
+        newList.insert(0, newList.pop())
+    return newList
 
 def numberToPair(number):
     return pairs[number]
@@ -30,9 +31,9 @@ def hostOrder(course):
     if course == "firstCourse":
         return pairGrid[0]
     elif course == "secondCourse":
-        return offsetList(pairGrid[1], 2)
+        return offsetList(pairGrid[1], int(n/3)-1)
     else:
-        return offsetList(pairGrid[2], 3)
+        return pairGrid[2]
 
 for x in range(int(n/3)):
     list = [pairGrid[y][x] for y in range(3)]
